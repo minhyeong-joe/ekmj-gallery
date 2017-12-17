@@ -119,7 +119,7 @@ body {
 
 @media screen and (max-width: 768px) {
   .banner {
-    background: url("../assets/photos/banner_small.JPG") no-repeat center center;
+    background: url("../assets/photos/banner_small.jpg") no-repeat center center;
     background-size: cover;
   }
   .scrolled>.homeTitle>p:first-child:before {
