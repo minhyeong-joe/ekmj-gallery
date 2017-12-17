@@ -243,12 +243,12 @@ $('.thumbnail.landscape').on('click', function() {
 
 $('.slide').on('click', function(e) {
   var URL = e.target.src;
-  console.log(URL);
-  // $('.loadingLogo').css({"background": "rgba(0,0,0,1) url('"+URL+"')   no-repeat center center", "background-size": "contain"});
-  // $('.loadingLogo').fadeIn("fast");
-  // $('body').css({"overflow-y":"hidden"});
-  // $('.loadingLogo').on('click', function() {
-  //   $('.loadingLogo').fadeOut("fast");
-  //   $('body').css({"overflow-y":"auto"});
-  // })
+  // console.log(URL);
+  $('.loadingLogo').css({"background": "rgba(0,0,0,1) url('"+URL+"')   no-repeat center center", "background-size": "contain"});
+  $('.loadingLogo').fadeIn("fast");
+  $('body').css({"overflow-y":"hidden"});
+  $('.loadingLogo').on('click', function() {
+    $('.loadingLogo').fadeOut("fast");
+    $('body').css({"overflow-y":"auto"});
+  })
 });
