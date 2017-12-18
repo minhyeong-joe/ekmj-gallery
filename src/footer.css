@@ -12,13 +12,13 @@
 .footerLink {
   font-family: 'Arbutus Slab', serif;
   font-weight: bold;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.5) !important;
   cursor: pointer;
   transition: 0.1s;
   text-decoration: none;
 }
 .footerLink:hover {
-  color: rgba(255,255,255,0.8);
+  color: rgba(255,255,255,0.8) !important;
   transition: 0.2s;
   text-shadow: 1px 1px 5px white;
 }

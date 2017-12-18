@@ -69,6 +69,11 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: background-image 1.25s linear;
+}
+.banner.slideshow {
+  background-image: url("../assets/photos/landscape/landscape (4).jpg");
+  transition: background-image 1.25s linear;
 }
 .bannerOverlay {
   height: 100%;
@@ -116,11 +121,31 @@ body {
   font-size: 14px;
   font-family: 'Arbutus Slab', serif;
 }
+#about {
+  width: 760px;
+  margin: auto;
+  text-align: center;
+}
+#about>h1 {
+  padding: 30px 0 10px 0;
+}
+#about>p {
+  color: #555;
+}
+#about>p:last-of-type {
+  margin-bottom: 10px;
+}
+#about>ul {
+  text-align: left;
+}
 
 @media screen and (max-width: 768px) {
   .banner {
     background: url("../assets/photos/banner_small.jpg") no-repeat center center;
     background-size: cover;
+  }
+  .banner.slideshow {
+    background-image: url("../assets/photos/portrait/portrait (6).jpg");
   }
   .scrolled>.homeTitle>p:first-child:before {
     content: "Eunkyung";
@@ -136,5 +161,8 @@ body {
   }
   .bannerOverlay>div {
     margin: 30px 0;
+  }
+  #about {
+    width: 90%;
   }
 }

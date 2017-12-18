@@ -25,6 +25,10 @@ var difference_ms = today - firstday;
 var difference = parseInt(difference_ms/(1000*60*60*24)) + 1; // count from day 0
 $('.dateCount').html(difference);
 
+//banner autoslide
+setInterval(function(){
+  $('.banner').toggleClass('slideshow');
+}, 5000);
 
 //adding photos to GALLERY
 var used_portrait =[];
@@ -35,9 +39,9 @@ for (var i=1; i<=25; i++) {
     ran = Math.floor(Math.random()*25)+1;
   };
   used_portrait.push(ran);
-  $('.slides.portrait').append("<img src='assets/photos/portrait/portrait ("+ran+").jpg' alt='' class='slide portrait'>");
-  $('.thumbnailWrapper.portrait').append("<img src='assets/photos/portrait/portrait ("+ran+").jpg' alt='' class='thumbnail portrait' id='"+ran+"'>");
-  $('.album.portrait').append("<img src='assets/photos/portrait/portrait ("+ran+").jpg' alt=''>");
+  $('.slides.portrait').append("<img src='assets/photos/portrait/portrait ("+ran+").jpg' alt='' class='slide portrait' draggable='false'>");
+  $('.thumbnailWrapper.portrait').append("<img src='assets/photos/portrait/portrait ("+ran+").jpg' alt='' class='thumbnail portrait' id='"+ran+"' draggable='false'>");
+  $('.album.portrait').append("<img src='assets/photos/portrait/portrait ("+ran+").jpg' alt='' draggable='false'>");
 };
 
 var used_landscape =[];
@@ -48,9 +52,9 @@ for (var i=1; i<=4; i++) {
     ran = Math.floor(Math.random()*4)+1;
   };
   used_landscape.push(ran);
-  $('.slides.landscape').append("<img src='assets/photos/landscape/landscape ("+ran+").jpg' alt='' class='slide landscape'>");
-  $('.thumbnailWrapper.landscape').append("<img src='assets/photos/landscape/landscape ("+ran+").jpg' alt='' class='thumbnail landscape' id='"+ran+"'>");
-  $('.album.landscape').append("<img src='assets/photos/landscape/landscape ("+ran+").jpg' alt=''>");
+  $('.slides.landscape').append("<img src='assets/photos/landscape/landscape ("+ran+").jpg' alt='' class='slide landscape' draggable='false'>");
+  $('.thumbnailWrapper.landscape').append("<img src='assets/photos/landscape/landscape ("+ran+").jpg' alt='' class='thumbnail landscape' id='"+ran+"' draggable='false'>");
+  $('.album.landscape').append("<img src='assets/photos/landscape/landscape ("+ran+").jpg' alt='' draggable='false'>");
 };
 
 
@@ -167,6 +171,29 @@ $('.albumContainer.landscape').on('click', function() {
 $('.right').on('click', function(){
   slide++;
   if (slide <= total) {
+    // $('.slide.active').css({"transform": "rotateY(-60deg)"});
+    currentSlide.removeClass('active');
+    currentThumbnail.removeClass('active');
+    currentSlide = $('.slide:nth-child('+slide+')');
+    currentThumbnail = $('.thumbnail:nth-child('+slide+')');
+    currentSlide.addClass('active');
+    currentThumbnail.addClass('active');
+    $('.slides').css({"transform":"translateX(-"+(width*(slide-1))+"px)"});
+  } else {
+    currentSlide.removeClass('active');
+    currentThumbnail.removeClass('active');
+    slide = 1;
+    currentSlide = $('.slide:nth-child('+slide+')');
+    currentThumbnail = $('.thumbnail:nth-child('+slide+')');
+    currentSlide.addClass('active');
+    currentThumbnail.addClass('active');
+    $('.slides').css({"transform": "translateX("+(width/total)+"px)"});
+  }
+});
+$('.slideWrapper').on('swipeleft', function() {
+  slide++;
+  if (slide <= total) {
+    // $('.slide.active').css({"transform": "rotateY(-60deg)"});
     currentSlide.removeClass('active');
     currentThumbnail.removeClass('active');
     currentSlide = $('.slide:nth-child('+slide+')');
@@ -188,6 +215,27 @@ $('.right').on('click', function(){
 
 //left click
 $('.left').on('click', function(){
+  slide--;
+  if (slide > 0) {
+    currentSlide.removeClass('active');
+    currentThumbnail.removeClass('active');
+    currentSlide = $('.slide:nth-child('+slide+')');
+    currentThumbnail = $('.thumbnail:nth-child('+slide+')');
+    currentSlide.addClass('active');
+    currentThumbnail.addClass('active');
+    $('.slides').css({"transform":"translateX(-"+ (width*(slide-1))+"px)"});
+  } else {
+    currentSlide.removeClass('active');
+    currentThumbnail.removeClass('active');
+    slide = total;
+    currentSlide = $('.slide:nth-child('+slide+')');
+    currentThumbnail = $('.thumbnail:nth-child('+slide+')');
+    currentSlide.addClass('active');
+    currentThumbnail.addClass('active');
+    $('.slides').css({"transform": "translateX(-"+(width*(total-1))+"px)"});
+  }
+});
+$('.slideWrapper').on('swiperight', function() {
   slide--;
   if (slide > 0) {
     currentSlide.removeClass('active');
