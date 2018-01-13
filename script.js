@@ -51,8 +51,8 @@ $(window).on('load', function() {
     pauseTime: 0,
     animSpeed: 300,
     manualAdvance: true,
-    controlNavThumbs: false,
-    afterChange: function() {if(nivoReady){currentLandscape();}},
+    // controlNavThumbs: true,
+    // afterChange: function() {if(nivoReady){currentLandscape();}},
   });
   $('#portrait-slider').nivoSlider({
     effect: 'random',
@@ -81,26 +81,32 @@ $(window).on('load', function() {
   //thumbnail highlight
 
   var nivoReady = false;
-  function currentLandscape() {
-    var currentLS = $('#landscape-slider').data('nivo:vars').currentSlide + 1;
-    $('#landscape-slider-wrapper .nivo-controlNav.nivo-thumbs-enabled img').removeClass("current");
-    $('#landscape-slider-wrapper .nivo-controlNav.nivo-thumbs-enabled a:nth-child('+currentLS+') img').addClass("current");
-    nivoReady = true;
-  };
+  // function currentLandscape() {
+  //   var currentLS = $('#landscape-slider').data('nivo:vars').currentSlide + 1;
+  //   $('#landscape-slider-wrapper .nivo-controlNav.nivo-thumbs-enabled img').removeClass("current");
+  //   $('#landscape-slider-wrapper .nivo-controlNav.nivo-thumbs-enabled a:nth-child('+currentLS+') img').addClass("current");
+  //   nivoReady = true;
+  // };
   function currentPortrait() {
     var currentPS = $('#portrait-slider').data('nivo:vars').currentSlide + 1;
     $('#portrait-slider-wrapper .nivo-controlNav.nivo-thumbs-enabled img').removeClass("current");
     $('#portrait-slider-wrapper .nivo-controlNav.nivo-thumbs-enabled a:nth-child('+currentPS+') img').addClass("current");
     nivoReady = true;
   };
-  currentLandscape();
+  // currentLandscape();
   currentPortrait();
+
+  // $('#landscape-slider-wrapper .nivo-controlNav.nivo-thumbs-enabled img').on('click', function() {
+  //   $('html,body').animate({
+  //     scrollTop: $('#landscape-section').offset().top,
+  //   }, 500);
+  // });
 
   $('#portrait-slider-wrapper .nivo-controlNav.nivo-thumbs-enabled img').on('click', function() {
     $('html,body').animate({
       scrollTop: $('#portrait-section').offset().top,
     }, 500);
-  })
+  });
 
 
 });
